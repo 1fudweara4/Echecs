@@ -1,0 +1,89 @@
+# depslib dependency file v1.0
+1488035415 source:/home/fudweara/Documents/ProjetInfo/main.c
+	"header/main.h"
+
+1487687760 /home/fudweara/Documents/ProjetInfo/main.h
+
+1488829485 source:/home/fudweara/Documents/ProjetInfo/Menus.c
+	"header/Menus.h"
+	"header/Menus.h"
+
+1487689161 /home/fudweara/Documents/ProjetInfo/Menus.c
+
+1487692031 /home/fudweara/Documents/ProjetInfo/Menus.h
+
+1487948816 /home/fudweara/Documents/ProjetInfo/header/main.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1488043657 /home/fudweara/Documents/ProjetInfo/header/Menus.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1487863967 source:/home/fudweara/Documents/ProjetInfo/Tools.c
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+	"header/Tools.h"
+
+1487858260 /home/fudweara/Documents/ProjetInfo/header/Tools.h
+
+1488042792 source:/home/fudweara/Documents/ProjetInfo/outils.c
+	"header/outils.h"
+
+1487951776 /home/fudweara/Documents/ProjetInfo/header/outils.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1488033928 source:/home/fudweara/Documents/ProjetInfo/menuStatistiques.c
+	"header/menuStatistiques.h"
+
+1487950101 /home/fudweara/Documents/ProjetInfo/header/menuStatistiques.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1488830435 source:/home/fudweara/Documents/az/Echecs-master/main.c
+	"header/main.h"
+
+1489057255 /home/fudweara/Documents/az/Echecs-master/header/main.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489141767 source:/home/fudweara/Documents/az/Echecs-master/Menus.c
+	"header/Menus.h"
+
+1489138756 /home/fudweara/Documents/az/Echecs-master/header/Menus.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1488830435 source:/home/fudweara/Documents/az/Echecs-master/menuStatistiques.c
+	"header/menuStatistiques.h"
+
+1488830435 /home/fudweara/Documents/az/Echecs-master/header/menuStatistiques.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489140088 source:/home/fudweara/Documents/az/Echecs-master/outils.c
+	"header/outils.h"
+
+1489138936 /home/fudweara/Documents/az/Echecs-master/header/outils.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+

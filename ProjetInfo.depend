@@ -87,3 +87,47 @@
 	<stdio.h>
 	<string.h>
 
+1488830435 source:/home/fudweara/Echecs/main.c
+	"header/main.h"
+
+1489057255 /home/fudweara/Echecs/header/main.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489527252 source:/home/fudweara/Echecs/Menus.c
+	"header/Menus.h"
+
+1489526995 /home/fudweara/Echecs/header/Menus.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1488830435 source:/home/fudweara/Echecs/menuStatistiques.c
+	"header/menuStatistiques.h"
+
+1488830435 /home/fudweara/Echecs/header/menuStatistiques.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489525857 source:/home/fudweara/Echecs/outils.c
+	"header/outils.h"
+
+1489138936 /home/fudweara/Echecs/header/outils.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489528174 source:/home/fudweara/Echecs/echiquier.c
+	"header/echiquier.h"
+
+1489527521 /home/fudweara/Echecs/header/echiquier.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+

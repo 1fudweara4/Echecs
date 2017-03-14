@@ -6,6 +6,10 @@
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
 
+struct Pseudo{
+    char Nom[15];
+};
+
 void MenuPrincipal(SDL_Renderer* rendererWindow);
 void MenuJouer(SDL_Renderer* rendererWindow);
 void MenuNombreJoueur(SDL_Renderer* rendererWindow);
@@ -22,5 +26,4 @@ int IssueMenuPrincipal(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton);
 int IssueMenuJouer(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton);
 int IssueMenuNombreJoueur(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton);
 int IssueMenuPartieEnregistree(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton);
-int IssueEntreeNom(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton, int NbJoueur);
-
+int IssueEntreeNom(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton, int NbJoueur,int* NombreNomEntree,int*AvancementTexte,SDL_Rect Position,struct Pseudo Nom[2]);

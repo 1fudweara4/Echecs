@@ -7,7 +7,7 @@
 #define SCREEN_HEIGHT 480
 
 struct Pseudo{
-    char Nom[15];
+    char Nom[10];
 };
 
 void MenuPrincipal(SDL_Renderer* rendererWindow);

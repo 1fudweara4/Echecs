@@ -33,6 +33,7 @@ void AffichageImage(SDL_Renderer* rendererWindow,SDL_Rect CaractSurface, char* N
     else{
         printf("Erreur nom d'image non défini\n");
     }
+
 }
 
 void Boutton(SDL_Renderer* rendererWindow, SDL_Rect CaractSurface,char* Texte){
@@ -86,3 +87,34 @@ void Boutton(SDL_Renderer* rendererWindow, SDL_Rect CaractSurface,char* Texte){
     }
 }
 
+void affichageTexte(SDL_Renderer* rendererWindow,char* Texte,int taille, SDL_Rect Position){
+
+    SDL_Surface* SurfaceText=NULL;
+    SDL_Texture* texture;
+    SDL_Color Couleur={1,1,1},Fond={51,51,51};
+    TTF_Font *Font = NULL;
+
+    if(Texte==""){
+        printf("Erreur texte non défini\n");
+    }
+    else{
+        Font = TTF_OpenFont("DAT/chesterfield.ttf",taille);
+        SurfaceText = TTF_RenderText_Shaded(Font, Texte, Couleur,Fond);
+        texture = SDL_CreateTextureFromSurface(rendererWindow, SurfaceText);
+
+        Position.w=SurfaceText->w;
+        Position.h=SurfaceText->h;
+        Position.x=Position.x-(Position.w/2);
+        Position.y=Position.y-(Position.h/2);
+
+        SDL_RenderCopy(rendererWindow,texture,NULL ,&Position);
+        SDL_RenderPresent(rendererWindow);
+
+        printf("Texte '%s' affiché\n",Texte);
+
+        SDL_FreeSurface(SurfaceText);
+        TTF_CloseFont(Font);
+        Font = NULL;
+        SDL_DestroyTexture(texture);
+    }
+}

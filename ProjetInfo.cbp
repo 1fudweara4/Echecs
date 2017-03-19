@@ -41,7 +41,11 @@
 		<Unit filename="Menus.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="echiquier.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="header/Menus.h" />
+		<Unit filename="header/echiquier.h" />
 		<Unit filename="header/main.h" />
 		<Unit filename="header/menuStatistiques.h" />
 		<Unit filename="header/outils.h" />

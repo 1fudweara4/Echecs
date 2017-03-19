@@ -11,4 +11,4 @@ void BlitRefreshSurface(SDL_Renderer* rendererWindow,SDL_Surface* Surface,SDL_Re
 void AffichageImage(SDL_Renderer* rendererWindow,SDL_Rect CaractSurface, char* NomImage);
 void Boutton(SDL_Renderer* rendererWindow, SDL_Rect CaractSurface,char* Texte);
 
-void affichageTexte(SDL_Renderer* rendererWindow,char* Texte, SDL_Rect Position);
+void affichageTexte(SDL_Renderer* rendererWindow,char* Texte,int taille, SDL_Rect Position);

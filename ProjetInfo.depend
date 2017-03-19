@@ -96,10 +96,10 @@
 	<stdio.h>
 	<string.h>
 
-1489527252 source:/home/fudweara/Echecs/Menus.c
+1489859008 source:/home/fudweara/Echecs/Menus.c
 	"header/Menus.h"
 
-1489526995 /home/fudweara/Echecs/header/Menus.h
+1489859008 /home/fudweara/Echecs/header/Menus.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
@@ -114,20 +114,21 @@
 	<stdio.h>
 	<string.h>
 
-1489525857 source:/home/fudweara/Echecs/outils.c
+1489858391 source:/home/fudweara/Echecs/outils.c
 	"header/outils.h"
 
-1489138936 /home/fudweara/Echecs/header/outils.h
+1489855163 /home/fudweara/Echecs/header/outils.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
 	<string.h>
 
-1489528174 source:/home/fudweara/Echecs/echiquier.c
+1489935190 source:/home/fudweara/Echecs/echiquier.c
 	"header/echiquier.h"
 
-1489527521 /home/fudweara/Echecs/header/echiquier.h
+1489935439 /home/fudweara/Echecs/header/echiquier.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
+	<string.h>
 

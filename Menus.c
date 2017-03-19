@@ -192,7 +192,7 @@ void EventCLickMenuNombreJoueur(SDL_Renderer* rendererWindow, SDL_Rect* CaractBo
 }
 
 void EventCLickMenuPartieEnregistree(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton){
-printf("Menu en cours de develeloppement");
+printf("Menu en cours de develeloppement\n");
 }
 
 void EventCLickEntreeNom(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton,int NbJoueur){
@@ -226,7 +226,7 @@ void EventCLickEntreeNom(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton,i
                     break;
 
                 case SDL_TEXTINPUT:
-                        if(AvancementTexte<15){
+                        if(AvancementTexte<10){
                             strcat(&Nom[NombreNomEntree].Nom, event.text.text);
                             Boutton(rendererWindow,Position,&Nom[NombreNomEntree].Nom[0]);
                             printf("%s, sur %d\n",&Nom[NombreNomEntree].Nom[0]);

@@ -87,46 +87,91 @@
 	<stdio.h>
 	<string.h>
 
-1488830435 source:/home/fudweara/Echecs/main.c
+1489963922 source:/home/fudweara/Echecs/main.c
 	"header/main.h"
 
-1489057255 /home/fudweara/Echecs/header/main.h
+1489963922 /home/fudweara/Echecs/header/main.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
 	<string.h>
 
-1489859008 source:/home/fudweara/Echecs/Menus.c
+1490352987 source:/home/fudweara/Echecs/Menus.c
 	"header/Menus.h"
 
-1489859008 /home/fudweara/Echecs/header/Menus.h
+1489963922 /home/fudweara/Echecs/header/Menus.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
 	<string.h>
 
-1488830435 source:/home/fudweara/Echecs/menuStatistiques.c
+1489963922 source:/home/fudweara/Echecs/menuStatistiques.c
 	"header/menuStatistiques.h"
 
-1488830435 /home/fudweara/Echecs/header/menuStatistiques.h
+1489963922 /home/fudweara/Echecs/header/menuStatistiques.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
 	<string.h>
 
-1489858391 source:/home/fudweara/Echecs/outils.c
+1489963922 source:/home/fudweara/Echecs/outils.c
 	"header/outils.h"
 
-1489855163 /home/fudweara/Echecs/header/outils.h
+1489963922 /home/fudweara/Echecs/header/outils.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
 	<string.h>
 
-1489935190 source:/home/fudweara/Echecs/echiquier.c
+1491300988 source:/home/fudweara/Echecs/echiquier.c
 	"header/echiquier.h"
 
-1489935439 /home/fudweara/Echecs/header/echiquier.h
+1491239026 /home/fudweara/Echecs/header/echiquier.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1491238932 source:/home/fudweara/Documents/Echecs-master/echiquier.c
+	"header/echiquier.h"
+
+1491239026 /home/fudweara/Documents/Echecs-master/header/echiquier.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489963922 source:/home/fudweara/Documents/Echecs-master/main.c
+	"header/main.h"
+
+1489963922 /home/fudweara/Documents/Echecs-master/header/main.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1490352987 source:/home/fudweara/Documents/Echecs-master/Menus.c
+	"header/Menus.h"
+
+1489963922 /home/fudweara/Documents/Echecs-master/header/Menus.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489963922 source:/home/fudweara/Documents/Echecs-master/menuStatistiques.c
+	"header/menuStatistiques.h"
+
+1489963922 /home/fudweara/Documents/Echecs-master/header/menuStatistiques.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<stdio.h>
+	<string.h>
+
+1489963922 source:/home/fudweara/Documents/Echecs-master/outils.c
+	"header/outils.h"
+
+1489963922 /home/fudweara/Documents/Echecs-master/header/outils.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>

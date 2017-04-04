@@ -11,6 +11,10 @@ struct CaractEchiquier{
     int DebutCase[8][8]; // En x : le 'début de la case en partant de la gauche, en y le début de la case en commencant par le haut
     int TailleCase;
 };
+struct pos{
+    int x;
+    int y;
+};
 
 void Echiquier(SDL_Renderer* rendererWindow,struct Pseudo Nom[2]);
 void AffichageEchequier(SDL_Renderer* rendererWindow);
@@ -24,4 +28,11 @@ void affichageNombrePions(SDL_Renderer*rendererWindow,int emplacementPions[8][8]
 void deroulementPartie(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2]);
 int ActionPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2],int NumeroJoueur);
 
-int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur);int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur);
+int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur);
+
+int puissance(int nombre, int p);
+
+void propositionDelacement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos Case,struct pos possibilites[3]);
+void affichagePossilite(SDL_Renderer* rendererWindow,struct pos possibilites[3]);
+
+int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos possibilites[3]);

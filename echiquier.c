@@ -1,5 +1,7 @@
 #include "header/echiquier.h"
 
+
+
 void Echiquier(SDL_Renderer* rendererWindow,struct Pseudo Nom[2]){
     int emplacementPions[8][8],i,j;
 
@@ -15,7 +17,6 @@ void Echiquier(SDL_Renderer* rendererWindow,struct Pseudo Nom[2]){
     deroulementPartie(rendererWindow,emplacementPions,Nom);
 
 }
-
 
 void AffichageEchequier(SDL_Renderer* rendererWindow){
     int i=0,j=0,wW,wH;
@@ -81,6 +82,7 @@ void initPions(SDL_Renderer* rendererWindow, int emplacementPions[8][8]){
                 }
             }
     }
+
 }
 
 
@@ -175,15 +177,15 @@ void affichageNombrePions(SDL_Renderer*rendererWindow,int emplacementPions[8][8]
 void deroulementPartie(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2]){
     int Continuer=1,i;
 
-    while(Continuer){
-            /** Coder fonction perdre/gagner ici! ( si sauvegarde peut être mettre condition si les deux nb pions ==0 et réflechir égalité **/
-                                                   /** un if/else ? donc un if avec Continuer=0 mais vide **/
+    do{
         for(i=0;i<2;i++){
             if(CompterNbPions(emplacementPions,0)!=0 && CompterNbPions(emplacementPions,1)!=0){
                 Continuer=ActionPions(rendererWindow,emplacementPions,Nom,i);
             }
         }
-    }
+        /** Coder fonction perdre/gagner ici! ( si sauvegarde peut être mettre condition si les deux nb pions ==0 et réflechir égalité **/
+                                                   /** un if/else ? donc un if avec Continuer=0 mais vide **/
+    }while(Continuer);
 }
 
 int ActionPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2],int NumeroJoueur){
@@ -217,7 +219,7 @@ int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int N
                     break;
 
                 case SDL_MOUSEBUTTONUP:
-                    Condition=DeplacementPions(rendererWindow,emplacementPions,NumeroJoueur);
+                    Condition=ClickSurPion(rendererWindow,emplacementPions,NumeroJoueur);
                     break;
                 case SDL_KEYUP:
                     if ( event.key.keysym.sym == SDLK_ESCAPE ){
@@ -234,22 +236,97 @@ int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int N
     return Continuer;
 }
 
-int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur){
-    int wW,wH,i,j,pX,pY,Condition=1;
+int ClickSurPion(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur){
+    int wW,wH,i,j,pX,pY, condtionAppuie=0,Condition=1,positionCaseX,positionCaseY,TailleCase;
     SDL_GetRendererOutputSize(rendererWindow,&wW,&wH);
     SDL_GetMouseState(&pX,&pY);
+    struct pos Position={12,12,12};
+    struct pos possibilites[3]={16,16,16,16,16,16,16,16,16};
+    TailleCase=wH*7/8/8;
 
     for(i=0;i<8;i++){
 
-        if(pX>((wH-wH*7/8)/2)+wH*7/8/8*i && pX<((wH-wH*7/8)/2)+wH*7/8/8*(i+1)){
+        positionCaseX=((wW-wH*7/8)/2)+i*TailleCase;
+
+        if(pX>positionCaseX && pX<positionCaseX+TailleCase){
+
             for(j=0;j<8;j++){
-                if(pY>((wW-wH*7/8)/2)+wH*7/8/8*j && pY<((wW-wH*7/8)/2)+wH*7/8/8*(j+1)){
+
+                positionCaseY=((wH-wH*7/8)/2)+TailleCase*j;
+
+                if(pY>positionCaseY && pY<positionCaseY+TailleCase){
                     if(emplacementPions[j][i]==NumeroJoueur){
-                        printf("OH YES\n");
+                        Position.x=i;
+                        Position.y=j;
+                        propositionDelacement(rendererWindow,emplacementPions,NumeroJoueur,Position,possibilites);
+                        //deplacementdespions
+                        //actualisationdelechequier
+                        SDL_Delay(1000);
+                        Condition=0;
                     }
                 }
             }
         }
+
     }
     return Condition;
 }
+
+int puissance(int nombre, int p){
+	if(p==0){
+        return 1;
+	}
+	else{
+		return nombre*puissance(nombre,p-1);
+	}
+	//return nombre;
+
+}
+
+void propositionDelacement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos Case,struct pos possibilites[3]){
+    remplirTableauCondition(emplacementPions,Case,possibilites,NumeroJoueur);
+    affichagePossilite(rendererWindow,possibilites);
+}
+
+void remplirTableauCondition(int emplacementPions[8][8],struct pos Case,struct pos possibilites[3],int NumeroJoueur){
+
+    if(Case.x-1>=0 && Case.x-1<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
+            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x-1]!=NumeroJoueur){
+                possibilites[0].x=Case.x-1;
+                possibilites[0].y=Case.y-puissance(-1,NumeroJoueur);
+            }
+    }
+
+    if(Case.x>=0 && Case.x<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
+            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x]!=NumeroJoueur){
+                possibilites[1].x=Case.x;
+                possibilites[1].y=Case.y-puissance(-1,NumeroJoueur);
+            }
+    }
+    if(Case.x+1>=0 && Case.x+1<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
+        if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x+1]!=NumeroJoueur){
+                possibilites[2].x=Case.x+1;
+                possibilites[2].y=Case.y-puissance(-1,NumeroJoueur);
+        }
+    }
+}
+
+void affichagePossilite(SDL_Renderer* rendererWindow,struct pos possibilites[3]){
+    int i,wW,wH;
+    SDL_Rect PositionImage;
+
+    SDL_GetRendererOutputSize(rendererWindow,&wW,&wH);
+
+    for(i=0;i<3;i++){
+        if(possibilites[i].x!=16){
+            printf("%d %d %d\n",possibilites[i].x,possibilites[i].y,i);
+            PositionImage.x=((wW-wH*7/8)/2)+wH*7/8/8*possibilites[i].x;
+            PositionImage.y=((wH-wH*7/8)/2)+wH*7/8/8*possibilites[i].y;
+            PositionImage.h=wH*7/8/8;
+            PositionImage.w=wH*7/8/8;
+            AffichageImage(rendererWindow,PositionImage,"DAT/Image/proposition.bmp");
+        }
+    }
+}
+
+

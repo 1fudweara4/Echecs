@@ -189,14 +189,14 @@ void deroulementPartie(SDL_Renderer* rendererWindow,int emplacementPions[8][8],s
 }
 
 int ActionPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2],int NumeroJoueur){
-    int Continuer=0;
+    int Continuer;
 
     if(Nom[NumeroJoueur].Nom[0]==NULL){
         printf("Ordinateur qui joue\n");
     }
     else{
         printf("Joueur 'réel' qui joue\n");
-        ChoixEvenement(rendererWindow,emplacementPions,NumeroJoueur);
+        Continuer=ChoixEvenement(rendererWindow,emplacementPions,NumeroJoueur);
 
     }
 
@@ -237,11 +237,11 @@ int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int N
 }
 
 int ClickSurPion(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur){
-    int wW,wH,i,j,pX,pY, condtionAppuie=0,Condition=1,positionCaseX,positionCaseY,TailleCase;
+    int wW,wH,i,j,pX,pY,Condition=1,positionCaseX,positionCaseY,TailleCase;
     SDL_GetRendererOutputSize(rendererWindow,&wW,&wH);
     SDL_GetMouseState(&pX,&pY);
     struct pos Position={12,12,12};
-    struct pos possibilites[3]={16,16,16,16,16,16,16,16,16};
+    struct pos possibilites[3]={16,16,16,16,16,16,16,16,16,16};
     TailleCase=wH*7/8/8;
 
     for(i=0;i<8;i++){
@@ -258,11 +258,11 @@ int ClickSurPion(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int Num
                     if(emplacementPions[j][i]==NumeroJoueur){
                         Position.x=i;
                         Position.y=j;
+                        printf("TEST\n");
                         propositionDelacement(rendererWindow,emplacementPions,NumeroJoueur,Position,possibilites);
-                        //deplacementdespions
-                        //actualisationdelechequier
-                        SDL_Delay(1000);
-                        Condition=0;
+                        Condition=DeplacementPions(rendererWindow,emplacementPions,NumeroJoueur,possibilites,Position);
+                        ActualisationEchequier(rendererWindow,emplacementPions,possibilites,Position);
+                        printf("Attente de 5s\n");
                     }
                 }
             }
@@ -329,4 +329,97 @@ void affichagePossilite(SDL_Renderer* rendererWindow,struct pos possibilites[3])
     }
 }
 
+int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos possibilites[3],struct pos Position){
+    SDL_Event event;
+    int i, RefaireBoucle=1,Quitter=0;
+    struct pos PositionCurseur,TailleEcran;
+    SDL_GetRendererOutputSize(rendererWindow,&TailleEcran.x,&TailleEcran.y);
 
+    while(!Quitter){
+        if(SDL_PollEvent(&event)){
+            switch(event.type){
+                case SDL_MOUSEBUTTONUP:
+                    Quitter=1;
+                    SDL_GetMouseState(&PositionCurseur.x,&PositionCurseur.y);
+                    for(i=0;i<3;i++){
+                        if(PositionCurseur.x>((TailleEcran.x-TailleEcran.y*7/8)/2)+TailleEcran.y*7/8/8*possibilites[i].x && PositionCurseur.x<((TailleEcran.x-TailleEcran.y*7/8)/2)+TailleEcran.y*7/8/8*(possibilites[i].x+1)){
+                            if(PositionCurseur.y>((TailleEcran.y-TailleEcran.y*7/8)/2)+TailleEcran.y*7/8/8*possibilites[i].y && PositionCurseur.y<((TailleEcran.y-TailleEcran.y*7/8)/2)+TailleEcran.y*7/8/8*(possibilites[i].y+1)){
+                                RefaireBoucle=0;
+                                emplacementPions[possibilites[i].y][possibilites[i].x]=NumeroJoueur;
+                                emplacementPions[Position.y][Position.x]=3;
+                                printf("%d %d est l'emplacement cliqué.\n",possibilites[i].x,possibilites[i].y);
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+    return RefaireBoucle;
+}
+
+void ActualisationEchequier(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct pos possibilites[3],struct pos Case){
+    int i,wW,wH;
+    SDL_Rect CaractCase;
+    SDL_GetRendererOutputSize(rendererWindow,&wW,&wH);
+
+    for(i=0;i<3;i++){
+            CaractCase.h=CaractCase.w=wH*7/8/8;
+            CaractCase.x=((wW-wH*7/8)/2)+CaractCase.h*possibilites[i].x;
+            CaractCase.y=((wH-wH*7/8)/2)+CaractCase.w*possibilites[i].y;
+
+        if(possibilites[i].y%2==0){
+                if(possibilites[i].x%2==0){
+                    AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseBlanche.bmp");
+                }
+                else{
+                    AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseNoir.bmp");
+                }
+            }
+            else{
+                if(possibilites[i].x%2==0){
+                    AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseNoir.bmp");
+                }
+                else{
+                    AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseBlanche.bmp");
+                }
+    }
+    if(emplacementPions[possibilites[i].y][possibilites[i].x]==0){
+            printf("%d valeur /%d %d case blanche affichée.\n",emplacementPions[possibilites[i].x][possibilites[i].y],possibilites[i].x,possibilites[i].y);
+        AffichagePions(rendererWindow,CaractCase,"DAT/Image/pawn_nw.bmp");
+    }
+    if(emplacementPions[possibilites[i].y][possibilites[i].x]==1){
+        printf(" %d valeur / %d %d case noire affichée.\n",emplacementPions[possibilites[i].x][possibilites[i].y],possibilites[i].x,possibilites[i].y);
+        AffichagePions(rendererWindow,CaractCase,"DAT/Image/pawn_nb.bmp");
+    }
+
+    CaractCase.x=((wW-wH*7/8)/2)+CaractCase.h*Case.x;
+    CaractCase.y=((wH-wH*7/8)/2)+CaractCase.w*Case.y;
+
+    if(Case.y%2==0){
+        if(Case.x%2==0){
+            AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseBlanche.bmp");
+        }
+        else{
+            AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseNoir.bmp");
+        }
+    }
+    else{
+        if(Case.x%2==0){
+            AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseNoir.bmp");
+        }
+        else{
+            AffichageImage(rendererWindow,CaractCase,"DAT/Image/caseBlanche.bmp");
+        }
+    }
+
+    if(emplacementPions[Case.y][Case.x]==0){
+        AffichagePions(rendererWindow,CaractCase,"DAT/Image/pawn_nw.bmp");
+    }
+    if(emplacementPions[Case.y][Case.x]==1){
+        AffichagePions(rendererWindow,CaractCase,"DAT/Image/pawn_nb.bmp");
+    }
+
+    }
+}

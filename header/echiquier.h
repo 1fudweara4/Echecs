@@ -35,4 +35,5 @@ int puissance(int nombre, int p);
 void propositionDelacement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos Case,struct pos possibilites[3]);
 void affichagePossilite(SDL_Renderer* rendererWindow,struct pos possibilites[3]);
 
-int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos possibilites[3]);
+int DeplacementPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur,struct pos possibilites[3], struct pos Position);
+void ActualisationEchequier(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct pos possibilites[3],struct pos Case);

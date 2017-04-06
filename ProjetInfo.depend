@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1491464471 source:/home/fudweara/Echecs/echiquier.c
+1491468852 source:/home/fudweara/Echecs/echiquier.c
 	"header/echiquier.h"
 
-1491463870 /home/fudweara/Echecs/header/echiquier.h
+1491466141 /home/fudweara/Echecs/header/echiquier.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<stdio.h>
@@ -17,7 +17,7 @@
 	<stdio.h>
 	<string.h>
 
-1490352987 source:/home/fudweara/Echecs/Menus.c
+1491466059 source:/home/fudweara/Echecs/Menus.c
 	"header/Menus.h"
 
 1489963922 /home/fudweara/Echecs/header/Menus.h

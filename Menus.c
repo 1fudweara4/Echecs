@@ -103,7 +103,6 @@ void EntreeNom(SDL_Renderer* rendererWindow, int NbJoueur){
 }
 
 
-
 void EventCLickMenuPrincipal(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton){;
     SDL_Event event;
     int Continuer=1;
@@ -254,7 +253,6 @@ void EventCLickEntreeNom(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton,i
     }
     SDL_StopTextInput();
 }
-
 
 
 int IssueMenuPrincipal(SDL_Renderer* rendererWindow, SDL_Rect* CaractBoutton){

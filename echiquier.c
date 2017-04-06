@@ -1,7 +1,6 @@
 #include "header/echiquier.h"
 
 
-
 void Echiquier(SDL_Renderer* rendererWindow,struct Pseudo Nom[2]){
     int emplacementPions[8][8],i,j;
 
@@ -179,17 +178,16 @@ void deroulementPartie(SDL_Renderer* rendererWindow,int emplacementPions[8][8],s
 
     do{
         for(i=0;i<2;i++){
-            if(CompterNbPions(emplacementPions,0)!=0 && CompterNbPions(emplacementPions,1)!=0){
+            if(CompterNbPions(emplacementPions,0)!=0 && CompterNbPions(emplacementPions,1)!=0 && Continuer!=0){
                 Continuer=ActionPions(rendererWindow,emplacementPions,Nom,i);
+                affichageNombrePions(rendererWindow,emplacementPions);
             }
         }
-        /** Coder fonction perdre/gagner ici! ( si sauvegarde peut être mettre condition si les deux nb pions ==0 et réflechir égalité **/
-                                                   /** un if/else ? donc un if avec Continuer=0 mais vide **/
     }while(Continuer);
 }
 
 int ActionPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct Pseudo Nom[2],int NumeroJoueur){
-    int Continuer;
+    int Continuer,i;
 
     if(Nom[NumeroJoueur].Nom[0]==NULL){
         printf("Ordinateur qui joue\n");
@@ -200,12 +198,25 @@ int ActionPions(SDL_Renderer* rendererWindow,int emplacementPions[8][8],struct P
 
     }
 
+    for(i=0;i<8;i++){
+        if(emplacementPions[0][i]==0){
+            printf("Victoire Blanche\n");
+            Continuer=0;
+        }
+        if(emplacementPions[7][i]==1){
+            printf("Victoire Noir\n");
+            Continuer=0;
+        }
+    }
+     /** Coder fonction perdre/gagner ici! ( si sauvegarde peut être mettre condition si les deux nb pions ==0 et réflechir égalité **/
+                                                   /** un if/else ? donc un if avec Continuer=0 mais vide **/
+
     return Continuer;
 }
 
 int ChoixEvenement(SDL_Renderer* rendererWindow,int emplacementPions[8][8],int NumeroJoueur){
     SDL_Event event;
-    int Continuer=0, Condition=1;
+    int Continuer=1, Condition=1;
 
     while(Condition){
         if(SDL_PollEvent(&event)){
@@ -291,20 +302,20 @@ void propositionDelacement(SDL_Renderer* rendererWindow,int emplacementPions[8][
 void remplirTableauCondition(int emplacementPions[8][8],struct pos Case,struct pos possibilites[3],int NumeroJoueur){
 
     if(Case.x-1>=0 && Case.x-1<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
-            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x-1]!=NumeroJoueur){
+            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x-1]!=NumeroJoueur && emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x-1]!=3){
                 possibilites[0].x=Case.x-1;
                 possibilites[0].y=Case.y-puissance(-1,NumeroJoueur);
             }
     }
 
     if(Case.x>=0 && Case.x<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
-            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x]!=NumeroJoueur){
+            if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x]!=NumeroJoueur && emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x]==3){
                 possibilites[1].x=Case.x;
                 possibilites[1].y=Case.y-puissance(-1,NumeroJoueur);
             }
     }
     if(Case.x+1>=0 && Case.x+1<8 && Case.y-puissance(-1,NumeroJoueur)>=0 && Case.y-puissance(-1,NumeroJoueur)<8){
-        if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x+1]!=NumeroJoueur){
+        if(emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x+1]!=NumeroJoueur && emplacementPions[Case.y-puissance(-1,NumeroJoueur)][Case.x+1]!=3){
                 possibilites[2].x=Case.x+1;
                 possibilites[2].y=Case.y-puissance(-1,NumeroJoueur);
         }
